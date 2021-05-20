@@ -55,7 +55,7 @@
     "Actions": [{
         "Identifier": "8f36484d-085d-4bde-9cd5-6c19d91b057f",
         "Parameters": {
-            "SSML": "<speak>Hello!,<break strength='weak'/> Welcome to starvanity!. <break strength='weak'/> one moment while i lookup vanity numbers for your phone number <say-as interpret-as='telephone'>$.CustomerEndpoint.Address </say-as><break strength='x-strong'/></speak>"
+            "SSML": "<speak>Hello!,<break strength='weak'/> Welcome to starvanity!. <break strength='weak'/> i see you are calling from <say-as interpret-as='telephone'>$.CustomerEndpoint.Address </say-as><break strength='x-strong'/></speak>"
         },
         "Transitions": {
             "NextAction": "afcfdf47-0552-4fe7-bd08-8b6362e9f8bc",

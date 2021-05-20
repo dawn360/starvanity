@@ -11,7 +11,18 @@ The real challenge was with the aws connect API which seem to be new! (just rele
    Not much,while i have some tests for the lambda functions, i may have sacrificed a robust/comprehensive testing setup which is vital for continuous development.
 
 **What would you have done with more time?**
-Comprehensive tests on the custom construct and lambda functions. Still need to figure out a issue #3 above. i would attempt the super bonus
+Comprehensive tests on the custom construct and lambda functions. Still need to figure out a issue #3 above. 
+i would attempt the super bonus web frontend. My idea was a create a websocket via APIGateway which clients can listen to dynamodb events on the frontend.
+This could be deployed via the CDK too with a custom resource which updates the frontend code on s3 with the deployed API endpoint.
+With more time i would have spent some time on custom vanity function. ATM i am using a python library (`vanitynumber`) to achieve this. 
 
 **What other considerations would you make before making our toy app into something that would be ready for high volumes of traffic, potential attacks**
 There could be potential exposure and abuse of deployment resources if arn permissions are not configured right. Eg. when creating lambda functions and dynamo its always important to restrict to which resources are allowed to use/invoke these services. As far as high traffic volume goes, a potential issue (very unlikely) could be the concurrency limit of 1000 on lambda functions however you'll need to have an insane amount of traffic to hit this limit so this could be countered as an edge case. 
+
+### Diagrams
+
+#### Contact Flow
+<img src="images/cflow.png"/>
+
+#### CloudFormation Workflow
+ <img src="images/starvanity.png" />
