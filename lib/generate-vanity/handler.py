@@ -19,8 +19,8 @@ def handler(event, context):
     result = vanitynumber.all_wordifications(contactAddress)
     message = "Sorry, we couldn't a vanity number for your phone number. Please try another Number"
     if result:
-        message = 'Here are your top vanity numbers <break strength="strong"/><say-as interpret-as="telephone">{}</say-as><break strength="strong"/>'.format(
-            '</<say-as><say-as interpret-as="telephone">'.join(result[:3]))
+        message = 'Here are your top vanity numbers <break strength="strong"/>{}<break strength="strong"/>'.format(
+            ' '.join(result[:3]))
         item = {
             'contactId': contactId,
             'contactAddress': contactAddress,
