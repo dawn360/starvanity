@@ -1,0 +1,120 @@
+{
+    "Version": "2019-10-30",
+    "StartAction": "8f36484d-085d-4bde-9cd5-6c19d91b057f",
+    "Metadata": {
+        "entryPointPosition": {
+            "x": 15,
+            "y": 20
+        },
+        "snapToGrid": false,
+        "ActionMetadata": {
+            "8f36484d-085d-4bde-9cd5-6c19d91b057f": {
+                "position": {
+                    "x": 243,
+                    "y": 59
+                },
+                "useDynamic": false
+            },
+            "58a746ae-1dd1-47f7-bf4b-6da0568dcbb1": {
+                "position": {
+                    "x": 748,
+                    "y": 307
+                },
+                "useDynamic": false
+            },
+            "cb177e7e-8e46-46ba-ab61-02d544248cfa": {
+                "position": {
+                    "x": 1321,
+                    "y": 141
+                }
+            },
+            "73863eb5-a1dd-428a-884e-4be42c291eb8": {
+                "position": {
+                    "x": 1038,
+                    "y": 187
+                },
+                "useDynamic": false
+            },
+            "afcfdf47-0552-4fe7-bd08-8b6362e9f8bc": {
+                "position": {
+                    "x": 489,
+                    "y": 174
+                },
+                "dynamicMetadata": {},
+                "useDynamic": false
+            },
+            "b3144e20-9016-4110-a38d-4a1fd5e4448e": {
+                "position": {
+                    "x": 726,
+                    "y": 60
+                },
+                "useDynamic": false
+            }
+        }
+    },
+    "Actions": [{
+        "Identifier": "8f36484d-085d-4bde-9cd5-6c19d91b057f",
+        "Parameters": {
+            "SSML": "<speak>Hello!,<break strength='weak'/> Welcome to starvanity!. <break strength='weak'/> one moment while i lookup vanity numbers for your phone number <say-as interpret-as='telephone'>$.CustomerEndpoint.Address </say-as><break strength='x-strong'/></speak>"
+        },
+        "Transitions": {
+            "NextAction": "afcfdf47-0552-4fe7-bd08-8b6362e9f8bc",
+            "Errors": [],
+            "Conditions": []
+        },
+        "Type": "MessageParticipant"
+    }, {
+        "Identifier": "58a746ae-1dd1-47f7-bf4b-6da0568dcbb1",
+        "Parameters": {
+            "SSML": "<speak>Hmmm, Sorry, there was an error generating your vanity numbers. Please try again later</speak>"
+        },
+        "Transitions": {
+            "NextAction": "73863eb5-a1dd-428a-884e-4be42c291eb8",
+            "Errors": [],
+            "Conditions": []
+        },
+        "Type": "MessageParticipant"
+    }, {
+        "Identifier": "cb177e7e-8e46-46ba-ab61-02d544248cfa",
+        "Type": "DisconnectParticipant",
+        "Parameters": {},
+        "Transitions": {}
+    }, {
+        "Identifier": "73863eb5-a1dd-428a-884e-4be42c291eb8",
+        "Parameters": {
+            "Text": "<speak>Thanks for calling starvanity, enjoy the rest of your day.<break strength='weak'/>Bye</speak>"
+        },
+        "Transitions": {
+            "NextAction": "cb177e7e-8e46-46ba-ab61-02d544248cfa",
+            "Errors": [],
+            "Conditions": []
+        },
+        "Type": "MessageParticipant"
+    }, {
+        "Identifier": "afcfdf47-0552-4fe7-bd08-8b6362e9f8bc",
+        "Parameters": {
+            "LambdaFunctionARN": "%s",
+            "InvocationTimeLimitSeconds": "8"
+        },
+        "Transitions": {
+            "NextAction": "b3144e20-9016-4110-a38d-4a1fd5e4448e",
+            "Errors": [{
+                "NextAction": "58a746ae-1dd1-47f7-bf4b-6da0568dcbb1",
+                "ErrorType": "NoMatchingError"
+            }],
+            "Conditions": []
+        },
+        "Type": "InvokeLambdaFunction"
+    }, {
+        "Identifier": "b3144e20-9016-4110-a38d-4a1fd5e4448e",
+        "Parameters": {
+            "SSML": "<speak>$.External.Message</speak>"
+        },
+        "Transitions": {
+            "NextAction": "73863eb5-a1dd-428a-884e-4be42c291eb8",
+            "Errors": [],
+            "Conditions": []
+        },
+        "Type": "MessageParticipant"
+    }]
+}

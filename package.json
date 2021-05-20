@@ -22,6 +22,10 @@
   },
   "dependencies": {
     "@aws-cdk/core": "1.104.0",
-    "source-map-support": "^0.5.16"
+    "source-map-support": "^0.5.16",
+    "@aws-cdk/aws-dynamodb": "*",
+    "@aws-cdk/aws-lambda": "*",
+    "@aws-cdk/aws-logs": "*",
+    "@aws-cdk/custom-resources": "*"
   }
 }
