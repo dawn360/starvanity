@@ -17,7 +17,9 @@ This could be deployed via the CDK too with a custom resource which updates the 
 With more time i would have spent some time on custom vanity function. ATM i am using a python library (`vanitynumber`) to achieve this. 
 
 **What other considerations would you make before making our toy app into something that would be ready for high volumes of traffic, potential attacks**
-There could be potential exposure and abuse of deployment resources if arn permissions are not configured right. Eg. when creating lambda functions and dynamo its always important to restrict to which resources are allowed to use/invoke these services. As far as high traffic volume goes, a potential issue (very unlikely) could be the concurrency limit of 1000 on lambda functions however you'll need to have an insane amount of traffic to hit this limit so this could be countered as an edge case. 
+1. There could be potential exposure and abuse of deployment resources if arn permissions are not configured right. Eg. when creating lambda functions and dynamo its always important to restrict to which resources are allowed to use/invoke these services. 
+2. As far as high traffic volume goes, a potential issue (very unlikely) could be the concurrency limit of 1000 on lambda functions however you'll need to have an insane amount of traffic to hit this limit so this could be countered as an edge case.
+3. You could also deploy the stack at multiple locations for global call centers to deal with call latency, if all data need to be synced into a central dynamodb then we could leverage dynamodb global tables to sync changes across multi-regional deployments
 
 ### Diagrams
 
